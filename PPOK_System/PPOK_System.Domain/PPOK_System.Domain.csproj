@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2DDB2495-E5F5-403B-BDEB-9231755CEB22}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PPOK_System.Domain</RootNamespace>
+    <AssemblyName>PPOK_System.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Database\Database.cs" />
+    <Compile Include="Database\SQL\Scripts.cs" />
+    <Compile Include="Models\ContactPreference.cs" />
+    <Compile Include="Models\Drug.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Prescription.cs" />
+    <Compile Include="Models\Schedule.cs" />
+    <Compile Include="Models\Store.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\Cryptography\Encrypt.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\SQL\Create\Drug.sql" />
+    <Content Include="Database\SQL\Create\ContactPreference.sql" />
+    <Content Include="Database\SQL\Create\Message.sql" />
+    <Content Include="Database\SQL\Create\Prescription.sql" />
+    <Content Include="Database\SQL\Create\Person.sql" />
+    <Content Include="Database\SQL\Create\Schedule.sql" />
+    <Content Include="Database\SQL\Create\Store.sql" />
+    <Content Include="Database\SQL\Delete\Drug.sql" />
+    <Content Include="Database\SQL\Delete\Message.sql" />
+    <Content Include="Database\SQL\Delete\ContactPreference.sql" />
+    <Content Include="Database\SQL\Delete\Prescription.sql" />
+    <Content Include="Database\SQL\Delete\Store.sql" />
+    <Content Include="Database\SQL\Delete\Person.sql" />
+    <Content Include="Database\SQL\Instantiation\CreateDatabase.sql" />
+    <Content Include="Database\SQL\Instantiation\CreateTables.sql" />
+    <Content Include="Database\SQL\Instantiation\InsertDummyData.sql" />
+    <Content Include="Database\SQL\Read\AllMessagesForPerson.sql" />
+    <Content Include="Database\SQL\Read\AllMessages.sql" />
+    <Content Include="Database\SQL\Read\AllPrescriptionsForDates.sql" />
+    <Content Include="Database\SQL\Read\AllPrescriptionsForPerson.sql" />
+    <Content Include="Database\SQL\Read\AllPrescriptions.sql" />
+    <Content Include="Database\SQL\Read\SingleDrug.sql" />
+    <Content Include="Database\SQL\Read\AllDrugs.sql" />
+    <Content Include="Database\SQL\Read\SinglePersonByPhone.sql" />
+    <Content Include="Database\SQL\Read\SinglePrescriptionById.sql" />
+    <Content Include="Database\SQL\Read\SingleStore.sql" />
+    <Content Include="Database\SQL\Read\SinglePrescriptionByDrug.sql" />
+    <Content Include="Database\SQL\Read\AllStores.sql" />
+    <Content Include="Database\SQL\Read\SingleMessage.sql" />
+    <Content Include="Database\SQL\Read\Schedules.sql" />
+    <Content Include="Database\SQL\Read\SinglePersonByEmail.sql" />
+    <Content Include="Database\SQL\Read\SinglePersonById.sql" />
+    <Content Include="Database\SQL\Read\AllPersons.sql" />
+    <Content Include="Database\SQL\Update\ContactPreference.sql" />
+    <Content Include="Database\SQL\Update\Message.sql" />
+    <Content Include="Database\SQL\Update\Drug.sql" />
+    <Content Include="Database\SQL\Update\Prescription.sql" />
+    <Content Include="Database\SQL\Update\Person.sql" />
+    <Content Include="Database\SQL\Update\Store.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

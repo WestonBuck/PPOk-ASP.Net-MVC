@@ -1,0 +1,1 @@
+INSERT INTO contact_preference VALUES(@person_id, @contact_type)

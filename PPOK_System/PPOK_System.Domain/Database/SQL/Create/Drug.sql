@@ -1,0 +1,1 @@
+INSERT INTO drug VALUES(@drug_id, @drug_name)

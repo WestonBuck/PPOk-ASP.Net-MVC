@@ -1,0 +1,1 @@
+DELETE FROM person WHERE person_id = @person_id

@@ -1,0 +1,1 @@
+INSERT INTO message VALUES(@prescription_id, @response, @fill_date, @pick_up_date, @filled)

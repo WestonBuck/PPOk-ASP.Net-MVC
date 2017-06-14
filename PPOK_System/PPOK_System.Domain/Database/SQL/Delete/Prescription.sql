@@ -1,0 +1,1 @@
+DELETE FROM prescription WHERE prescription_id = @prescription_id

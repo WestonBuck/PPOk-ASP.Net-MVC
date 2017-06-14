@@ -1,0 +1,1 @@
+DELETE FROM contact_preference WHERE preference_id = @preference_id

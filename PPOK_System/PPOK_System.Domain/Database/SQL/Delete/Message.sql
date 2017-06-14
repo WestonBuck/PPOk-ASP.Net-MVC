@@ -1,0 +1,1 @@
+DELETE FROM message_history WHERE message_id = @message_id

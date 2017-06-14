@@ -1,0 +1,1 @@
+DELETE FROM drug WHERE drug_id = @drug_id

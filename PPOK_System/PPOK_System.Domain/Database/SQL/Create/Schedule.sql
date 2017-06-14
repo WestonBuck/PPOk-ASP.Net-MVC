@@ -1,0 +1,1 @@
+INSERT INTO scheduler VALUES(@prescription_id, @response, @day_to_send)
