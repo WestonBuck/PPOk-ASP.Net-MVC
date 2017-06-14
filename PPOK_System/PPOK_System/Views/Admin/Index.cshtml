@@ -1,0 +1,87 @@
+﻿@model List<PPOK_System.Domain.Models.Store>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <h4>Manage Pharmacies</h4>
+    </div>
+    <div class="table-responsive">
+        <span title="Add New Pharmacy" data-toggle="tooltip">
+           <button class="btn btn-primary" onclick="loadModule(ADD_PHARMACY_URL)">
+                <i class="fa glyphicon-plus" aria-hidden="true"></i>
+            </button>
+        </span>
+        <table id="customer-table" class="table" style="width:100%;">
+            <thead>
+                <tr>
+                    <th>Pharmacy</th>
+                    <th>Pharmacy Name</th>
+                    <th>Address</th>
+                    <th>Location</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>@p.name</td>
+                        <td>@p.name</td>
+                        <td>@p.address</td>
+                        <td>@p.city, @p.state @p.zip</td>
+                        <td>
+                            <span title="Edit" data-toggle="tooltip">
+                                <button class="btn btn-primary btn-sm" onclick="loadModule(EDIT_PHARMACY_URL, @p.store_id)">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </button>
+                            </span>
+                            <span title="Add Pharmacist" data-toggle="tooltip">
+                                <button class="btn btn-primary btn-sm" onclick="loadModule(ADD_PHARMACIST_URL, @p.store_id)">
+                                    <i class="fa glyphicon-plus" aria-hidden="true"></i>
+                                </button>
+                            </span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="spinner">
+    <i class="fa fa-spinner fa-spin fa-2x fa-fw" aria-hidden="true"></i>
+    <span class="sr-only">Loading...</span>
+</div>
+
+
+
+@section inlineScript {
+    <script>
+        $(document).ready(function () {
+            $("#customer-table #checkall").click(function () {
+                if ($("#mytable #checkall").is(':checked')) {
+                    $("#mytable input[type=checkbox]").each(function () {
+                        $(this).prop("checked", true);
+                    });
+
+                } else {
+                    $("#mytable input[type=checkbox]").each(function () {
+                        $(this).prop("checked", false);
+                    });
+                }
+            });
+
+            $("[data-toggle=tooltip]").tooltip();
+        });
+    </script>
+}
+
+@section scriptsIncludes {
+    <script type="text/javascript" src="~/Content/Modules/ManageCustomersModule.js?Build=@Guid.NewGuid().ToString()"></script>
+}
+
+@section includeModal {
+    <div id="history-container" class="modal fade hidden-print" role="dialog" data-backdrop="false"></div>
+}

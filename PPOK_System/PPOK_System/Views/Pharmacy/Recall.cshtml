@@ -1,0 +1,30 @@
+﻿@model PPOK_System.Domain.Models.Drug
+@{
+    ViewBag.Title = "Recall";
+}
+
+<form class="form-horizontal">
+    <fieldset>
+        <!-- File Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="filebtn">Recall File</label>
+            <div class="col-md-4">
+                <input id="filebtn" name="filebtn" class="input-file" type="file">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Datepicker">Affected Dates</label>
+            <div class="col-md-8">
+                <input type="date" name="Date1">----------<input type="date" name="Date2">
+            </div>
+        </div>
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="button1id"></label>
+            <div class="col-md-8">
+                <button id="button1id" name="button1id" class="btn btn-primary">Cancel</button>
+                <button id="submitbtn" name="submitbtn" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

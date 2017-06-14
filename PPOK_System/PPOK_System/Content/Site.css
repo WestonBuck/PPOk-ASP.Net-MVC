@@ -1,0 +1,84 @@
+﻿html{
+    background: linear-gradient(to bottom right, white, lightgray) no-repeat center center fixed; 
+    background-size: cover;
+    position:center;
+    /*overflow-y: hidden;*/
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 0px;
+    background: transparent;
+    margin-top: 2%;
+    /*overflow-y: hidden;*/
+}
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+    padding: 0px 5px 0px 5px;
+}
+
+
+#checkBoxes {
+    padding: 50px 0px 10px 100px;
+    margin-top: 50px;
+    /*margin-bottom: 300px;*/
+    border: 2px solid #c7d7dc;
+    border-radius: 5px;
+    background-color: #DEEFF5;
+}
+
+#logout{
+    margin-top: 13px;
+    color: white;
+}
+#login{
+    text-align: center;
+    padding: 25px 0px 25px 0px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 2px solid #c7d7dc;
+    border-radius: 5px;
+    background-color: #DEEFF5;
+}
+#brand.navbar-brand{
+    color: white;
+}
+
+#importSelect{
+    text-align: center;
+    padding: 20px 0px 0px 0px;
+    margin: 10px 0px 25px 0px;
+    border: 2px solid #c7d7dc;
+    border-radius: 5px;
+    background-color: #DEEFF5;
+}
+
+
+.spinner-wrapper {
+    height: 50px;
+}
+
+#spinner {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: visible;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}

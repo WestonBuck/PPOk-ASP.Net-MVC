@@ -1,0 +1,57 @@
+﻿@model PPOK_System.Domain.Models.Person
+@{
+    ViewBag.Title = "Customer";
+}
+
+@*This is the header*@
+@using (Html.BeginForm("Index", "User", FormMethod.Post, new { id = "contact-form" })) {
+    @Html.HiddenFor(x => x.contact_preference.person_id)
+    @Html.HiddenFor(x => x.contact_preference.preference_id)
+
+    <div class="col-md-6 col-md-offset-3" id="checkBoxes">
+        <label class="control-label">Prescription Refills</label>
+        <br />
+        <div class="form-group">
+            <div class="radio">
+                @Html.RadioButtonFor(x => x.contact_preference.contact_type, "Phone", new { id = "Phone" })
+                @Html.Label("Phone", "Phone Call")
+            </div>
+            <div class="radio">
+                @Html.RadioButtonFor(x => x.contact_preference.contact_type, "Text", new { id = "Text" })
+                @Html.Label("Text", "Text Message")
+            </div>
+            <div class="radio">
+                @Html.RadioButtonFor(x => x.contact_preference.contact_type, "Email", new { id = "Email" })
+                @Html.Label("Email", "Email")
+            </div>
+            <div class="radio">
+                @Html.RadioButtonFor(x => x.contact_preference.contact_type, "None", new { id = "None" })
+                @Html.Label("None", "Do not contact me")
+            </div>
+        </div>
+        <!-- Button -->
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-4">
+                <button id="Submit" name="Submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+}
+
+@section inlineScript {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Checks to make sure a radio button has been selected
+            let form = $('#contact-form');
+            form.submit(function (e) {
+                if (!$('input[name="contact_preference.contact_type"]:checked').val()) {
+                    e.preventDefault();
+                    alert("Please select one way for us to contact you about prescription refills");
+                    form.preference.focus();
+                    return false;
+                }
+            });
+        });
+    </script>
+}

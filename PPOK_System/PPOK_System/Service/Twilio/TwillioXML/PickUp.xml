@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+  <Say voice="alice">Hello you currently have a perscription that can be refilled.</Say>
+  <Gather timeout="10">
+        <Say>If you would like a refill please press 1.</Say>
+        <Say>If you would not like a refill please press 2 or hangup.</Say>
+    </Gather>
+</Response>

@@ -1,0 +1,120 @@
+﻿@model List<PPOK_System.Domain.Models.Message>
+@{
+    ViewBag.Title = "Index";
+    PPOK_System.Domain.Service.Database db = new PPOK_System.Domain.Service.Database(PPOK_System.Models.SystemContext.DefaultConnectionString);
+    PPOK_System.Domain.Models.Person person;
+    int pid;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" id="importSelect">
+            <form id="import-form" action="/Import" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="col-form-label" for="file">Import Patient Data:</label>
+                    <label class="btn btn-primary" for="file" id="fakeButton">Select File</label>
+                    <input style="visibility: hidden; display: none;" class="" type="file" name="file" id="file" accept=".csv" onchange="filepathChange()" />
+                    <input class="btn btn-primary" id="import-submit" type="submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+    @*<div class="row">
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="searchInput"></label>
+            <div class="col-md-3">
+                <form id="import-form" action="/Import" method="post" enctype="multipart/form-data">
+                    <label for="file">Import:</label>
+                    <input type="file" name="file" id="file" accept=".csv" />
+                    <input id="import-submit" type="submit" />
+                </form>
+            </div>
+        </div>
+    </div>*@
+
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Pending Refills</h4>
+                <div class="table-responsive">
+
+                    <table id="pendingRefills" class="table table-bordred table-striped">
+
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Prescription</th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var m in Model)
+                            {
+                                if (m.response.Contains("yes") && !m.filled) //Customer wants a refill and the prescription has not been filled yet
+                                {
+                                    pid = m.prescription.person_id ?? default(int);
+                                    person = db.ReadSinglePerson(pid);   
+                                    <tr>
+                                        <td>@person.first_name @person.last_name</td>
+                                        <td>@m.prescription.drug.drug_name</td>
+                                        <td><p data-placement="left" data-toggle="tooltip"><button class="btn btn-primary" data-title="Edit" data-toggle="modal" data-target="#edit">Filled</button></p></td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+<div id="spinner">
+    <i class="fa fa-spinner fa-spin fa-2x fa-fw" aria-hidden="true"></i>
+    <span class="sr-only">Loading...</span>
+</div>
+
+
+@section inlineScript {
+<script>
+        $(document).ready(function () {
+            $("#customer-table #checkall").click(function () {
+                if ($("#mytable #checkall").is(':checked')) {
+                    $("#mytable input[type=checkbox]").each(function () {
+                        $(this).prop("checked", true);
+                    });
+
+                } else {
+                    $("#mytable input[type=checkbox]").each(function () {
+                        $(this).prop("checked", false);
+                    });
+                }
+            });
+
+            $("[data-toggle=tooltip]").tooltip();
+        });
+    </script>
+    <script>
+        function filepathChange() {
+            var fileSelected = document.getElementById('file').value;
+            if (fileSelected != '')
+                document.getElementById('fakeButton').innerHTML = fileSelected;
+            else
+                document.getElementById('fakeButton').innerHTML = 'Select File';
+        }
+
+</script>
+}
+
+@section scriptsIncludes {
+    <script type="text/javascript" src="~/Content/Modules/ImportModule.js"></script>
+    <script type="text/javascript" src="~/Content/Modules/ManageCustomersModule.js?Build=@Guid.NewGuid().ToString()"></script>
+    <script type="text/javascript" src="~/Content/Modules/PendingRefills.js?Build=@Guid.NewGuid().ToString()"></script>
+
+}
+
+
+
+@section includeModal {
+    <div id="import-container" class="modal fade hidden-print" role="dialog" data-backdrop="false"></div>
+    <div id="history-container" class="modal fade hidden-print" role="dialog" data-backdrop="false"></div>
+}

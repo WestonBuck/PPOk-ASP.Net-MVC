@@ -1,0 +1,8 @@
+PersonCode,PatientFirstName,PatientLastName,DOB,PatientZipCode,Phone,Email,DateFilled,PrescriptionNumber,DaysSupply,NumberOfRefills,NDCUPCHRI,GPIGenericName
+8,STEPHNIE,TESTER,20041012,98008,555-5562,test@test.com,20090506,1072330,30,2,60505006501,Omeprazole Cap Delayed Release 20 MG
+9,LYDIA,EIDSNESS,19930427,,555-5563,test@test.com,20080506,598871,30,0,49348007753,*Alcohol Swabs***
+10,MEGAN,TEEL,19650215,54153,555-5564,test@test.com,20080506,606451,18,0,591569550,Minocycline HCl Cap 100 MG
+11,STEPHANIE,HENRY,19230126,83536,555-5565,test@test.com,20080506,669697,2,0,406051201,Oxycodone w/ Acetaminophen Tab 5-325 MG
+12,Nina,Paege,19230126,,555-5566,test@test.com,20160506,481487,25,5,65027225,Olopatadine HCl Ophth Soln 0.2% (Base Equivalent)
+13,Nina,BROOKS,19420730,,555-5567,test@test.com,20080506,606453,30,0,781575401,Methylphenidate HCl Tab CR 20 MG
+1,Calgary,Michael,19950817,74011,9184082235,seth.michael@eagles.oc.edu,20170330,1,30,1,60505006501,Omeprazole Cap Delayed Release 20 MG

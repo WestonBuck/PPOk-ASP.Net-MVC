@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - PPOk app</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Vendor/datatables/css/datatables.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />     
+    <script src="~/Content/Vendor/modernizr/modernizr-2.6.2.js"></script>
+    @RenderSection("additionalCSS", false)
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <span class="nav navbar-brand" id="brand">
+                <i class="fa fa-medkit fa-5" aria-hidden="true"></i>
+            </span>
+            @if (User != null) {
+                if (User.IsInRole("Admin")) {
+                        <ul class="nav navbar-nav">
+                            <li><a href="/admin/index">Manage Pharmacy</a></li>
+                        </ul>
+                } else if (User.IsInRole("Pharmacist")) {
+                        <ul class="nav navbar-nav">
+                            <li><a href="/pharmacy/index">Manage Refills</a></li>
+                            <li><a href="/pharmacy/managecustomer">Manage Customer</a></li>
+                        </ul>
+                }
+
+                    <div class="navbar-right" id="logout">
+                        @Html.Encode(User.getName()) &nbsp;&nbsp;&nbsp;&nbsp;
+                        @Html.ActionLink("Log Out", "Logout", "Home")
+                    </div>
+                } else {
+                   <p class="nav navbar-brand" id="brand">Hello! Please log in to continue! </p>
+                }
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+
+    <script src="~/Content/Vendor/jquery/jquery-2.2.4.min.js"></script>
+    <script src="~/Content/Vendor/datatables/js/datatables.min.js"></script>
+    <script src="~/Content/Vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    @RenderSection("scriptsIncludes", false)
+    @RenderSection("inlineScript", false)
+
+
+    <footer>
+        @RenderSection("includeModal", false)
+    </footer>
+</body>
+</html>

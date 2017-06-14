@@ -1,0 +1,65 @@
+﻿@model PPOK_System.Domain.Models.Person
+@{ 
+    var id = ViewBag.store_id;
+}
+@using (Html.BeginForm("AddPharmacist2", "Admin", FormMethod.Post, new { id = "create-form" }))
+{
+    @Html.AntiForgeryToken()
+    //@Html.HiddenFor(m => m.person_id)
+    //@Html.HiddenFor(m => m.password)
+    @Html.HiddenFor(m => m.store_id)
+    @Html.HiddenFor(m => m.person_type)
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add A New Pharmacist</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        @*<tr>
+                            <td>Person ID</td>
+                            <td>@Html.DisplayFor(m => m.person_id)</td>
+                        </tr>*@
+                        @*<tr>
+                            <td>Store ID</td>
+                            <td>@Html.DisplayFor(m => m.store_id)</td>
+                        </tr>*@
+                        <tr>
+                            <td>First Name</td>
+                            <td>@Html.EditorFor(m => m.first_name)</td>
+                        </tr>
+                        <tr>
+                            <td>Last Name</td>
+                            <td>@Html.EditorFor(m => m.last_name)</td>
+                        </tr>
+                        <tr>
+                            <td>ZIP Code</td>
+                            <td>@Html.EditorFor(m => m.zip)</td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number</td>
+                            <td>@Html.EditorFor(m => m.phone)</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>@Html.EditorFor(m => m.email)</td>
+                        </tr>
+                        <tr>
+                            <td>Date of Birth</td>
+                            <td>@Html.EditorFor(m => m.date_of_birth)</td>
+                        </tr>
+                        @*<tr>
+                            <td>Person Type</td>
+                            <td>@Html.EditorFor(m => m.person_type)</td>
+                        </tr>*@
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

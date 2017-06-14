@@ -1,0 +1,30 @@
+﻿@model PPOK_System.Domain.Models.Person
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="container">
+    <div class="col-md-6 col-md-offset-3" id="login">
+        <h2>Welcome!</h2>
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { id = "create-form" }))
+        {
+            @Html.ValidationSummary();
+            <div>
+                <fieldset>
+                    <label for="email">Email</label>
+                    <div class="editor-field" id="email">
+                        @Html.TextBoxFor(p => p.email)
+                        @Html.ValidationMessageFor(p => p.email)
+                    </div>
+                    <label for="pass">Password</label>
+                    <div class="editor-field" id="password">
+                        @Html.PasswordFor(p => p.password)
+                        @Html.ValidationMessageFor(p => p.password)
+                    </div>
+                    <br />
+                    <input class="btn btn-primary" type="submit" value="Log In" />
+                </fieldset>
+            </div>
+        }
+    </div>
+</div>

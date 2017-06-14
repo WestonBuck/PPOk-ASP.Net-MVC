@@ -1,0 +1,85 @@
+﻿@model List<PPOK_System.Domain.Models.Person>
+@{
+    ViewBag.Title = "Manage Customer";
+}
+
+<div class="container">
+    <div class="row">
+        <h4>Manage Customer</h4>
+        <span title="Add New Person" data-toggle="tooltip">
+            Add New Person: <button class="btn btn-primary" onclick="loadModule(ADD_PERSON_URL)">
+                <i class="fa glyphicon-plus" aria-hidden="true"></i>
+            </button>
+        </span>
+    </div>
+    <div class="table-responsive">
+        <table id="customer-table" class="table" style="width:100%;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email Address</th>
+                    <th>Phone Number</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in Model) {
+                    <tr>
+                        <td>@p.person_id</td>
+                        <td>@p.first_name</td>
+                        <td>@p.last_name</td>
+                        <td>@p.email</td>
+                        <td>@p.phone</td>
+                        <td>
+                            <span title="Edit" data-toggle="tooltip">
+                                <button class="btn btn-primary btn-sm" onclick="loadModule(EDIT_CUSTOMER_URL, @p.person_id)">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </button>
+                            </span>
+                            <span title="Message History" data-toggle="tooltip">
+                                <button class="btn btn-primary btn-sm" onclick="loadModule(MESSAGE_HISTORY_URL, @p.person_id, 'POST')">
+                                    <i class="fa fa-history" aria-hidden="true"></i>
+                                </button>
+                            </span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="spinner">
+    <i class="fa fa-spinner fa-spin fa-2x fa-fw" aria-hidden="true"></i>
+    <span class="sr-only">Loading...</span>
+</div>
+
+@section inlineScript {
+    <script>
+        $(document).ready(function () {
+            $("#customer-table #checkall").click(function () {
+                if ($("#mytable #checkall").is(':checked')) {
+                    $("#mytable input[type=checkbox]").each(function () {
+                        $(this).prop("checked", true);
+                    });
+
+                } else {
+                    $("#mytable input[type=checkbox]").each(function () {
+                        $(this).prop("checked", false);
+                    });
+                }
+            });
+
+            $("[data-toggle=tooltip]").tooltip();
+        });
+    </script>
+}
+
+@section scriptsIncludes {
+    <script type="text/javascript" src="~/Content/Modules/ManageCustomersModule.js?Build=@Guid.NewGuid().ToString()"></script>
+}
+
+@section includeModal {
+    <div id="history-container" class="modal fade hidden-print" role="dialog" data-backdrop="false"></div>
+}
