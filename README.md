@@ -3,12 +3,12 @@ Website for PPOk
 
 ## Team
 ### Old Man and the C:\
-* Calgary Michael
-* Lane Wheeler
-* Weston Vidaurri
+* Calgary Michael - https://github.com/CalgaryMichael
+* Lane Wheeler - https://github.com/lanecwheeler
+* Weston Vidaurri - https://github.com/Wsloan0001
 * Rob Thompson
-* Weston Buck
-* Colby Dial
+* Weston Buck - https://github.com/WestonBuck
+* Colby Dial - https://github.com/CrudenDarkeyes
 
 ## Running Web Application
 ### Initializing
